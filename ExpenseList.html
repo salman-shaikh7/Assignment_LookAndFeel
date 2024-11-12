@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> - ExpenseTracker</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=7hnXevpmGjlfncNYYKKAdJQ511WX5dGoUR_EvKm_70Y" />
+    <link rel="stylesheet" href="/ExpenseTracker.styles.css?v=BpwTnviahHdtR-xHdVsdf4Rv8K2WFWSqAtrMwNLr9Hs" />
+</head>
+<body>
+    <header b-7m57npvwnm>
+        <nav b-7m57npvwnm class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div b-7m57npvwnm class="container-fluid">
+                <a class="navbar-brand" href="/">ExpenseTracker</a>
+                <button b-7m57npvwnm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-7m57npvwnm class="navbar-toggler-icon"></span>
+                </button>
+                <div b-7m57npvwnm class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-7m57npvwnm class="navbar-nav flex-grow-1">
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/Home.html">Home</a>
+                        </li>
+
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/Overview.html">Overview</a>
+                        </li>
+
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/ExpenseList.html">Expense</a>
+                        </li>
+
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/About.html">About</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div b-7m57npvwnm class="container">
+        <main b-7m57npvwnm role="main" class="pb-3">
+            
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Expenses List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" href="/Create.html">
+                <i class="bi bi-plus-circle"></i> Create New Expense
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Payment Method</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>Credit card bill</td>
+                <td>2024-11-23</td>
+                <td>$200.00</td> 
+                <td>Bill</td>
+                <td>Zelle</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary mx-2" href="/Edit Item.html">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a class="btn btn-danger mx-2" href="/DeleteItem.html">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>cash to friend</td>
+                <td>2024-11-22</td>
+                <td>$70.00</td> 
+                <td>Other</td>
+                <td>Cash</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary mx-2" href="/Expense/Edit/4">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a class="btn btn-danger mx-2" href="/Expense/Delete/4">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Shopping jeans</td>
+                <td>2024-11-21</td>
+                <td>$50.00</td> 
+                <td>Bill</td>
+                <td>Debit Card</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary mx-2" href="/Expense/Edit/8">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a class="btn btn-danger mx-2" href="/Expense/Delete/8">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>transcript fee</td>
+                <td>2024-11-27</td>
+                <td>$70.00</td> 
+                <td>Other</td>
+                <td>Zelle</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary mx-2" href="/Expense/Edit/9">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a class="btn btn-danger mx-2" href="/Expense/Delete/9">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+        </main>
+    </div>
+
+    <footer b-7m57npvwnm class="border-top footer text-muted">
+        <div b-7m57npvwnm class="container">
+            &copy; 2024 - ExpenseTracker - <a href="/Home/About">About</a>
+        </div>
+    </footer>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo"></script>
+    
+</body>
+</html>

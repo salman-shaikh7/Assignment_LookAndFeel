@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenses Overview - ExpenseTracker</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=7hnXevpmGjlfncNYYKKAdJQ511WX5dGoUR_EvKm_70Y" />
+    <link rel="stylesheet" href="/ExpenseTracker.styles.css?v=BpwTnviahHdtR-xHdVsdf4Rv8K2WFWSqAtrMwNLr9Hs" />
+</head>
+<body>
+    <header b-7m57npvwnm>
+        <nav b-7m57npvwnm class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div b-7m57npvwnm class="container-fluid">
+                <a class="navbar-brand" href="/">ExpenseTracker</a>
+                <button b-7m57npvwnm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-7m57npvwnm class="navbar-toggler-icon"></span>
+                </button>
+                <div b-7m57npvwnm class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-7m57npvwnm class="navbar-nav flex-grow-1">
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/Home.html">Home</a>
+                        </li>
+
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/Overview.html">Overview</a>
+                        </li>
+
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/ExpenseList.html">Expense</a>
+                        </li>
+
+                        <li b-7m57npvwnm class="nav-item">
+                            <a class="nav-link text-dark" href="/About.html">About</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div b-7m57npvwnm class="container">
+        <main b-7m57npvwnm role="main" class="pb-3">
+            
+
+<div class="container">
+    <!-- Expenses Charts Row -->
+    <div class="row">
+        <!-- Expenses by Category -->
+        <div class="col-md-4 col-sm-12 pt-4 pb-3">
+            <h1>Expenses by Category</h1>
+            <!-- Donut Chart Container -->
+            <canvas id="categoryDonutChart" class="chart-canvas"></canvas>
+        </div>
+
+        <!-- Expenses by Date -->
+        <div class="col-md-4 col-sm-12 pt-4 pb-3">
+            <h1>Expenses by Date</h1>
+            <!-- Bar Chart Canvas -->
+            <canvas id="expensesChart" class="chart-canvas"></canvas>
+        </div>
+
+        <!-- Expenses by Payment Method -->
+        <div class="col-md-4 col-sm-12 pt-4 pb-3">
+            <h1>Expenses by Payment Method</h1>
+            <!-- Pie Chart Canvas -->
+            <canvas id="paymentMethodPieChart" class="chart-canvas"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Expenses by Category - Donut Chart
+    var categories = ["Bill","Other"];
+    var categoryAmounts = [250.00,140.00];
+
+    var categoryCtx = document.getElementById('categoryDonutChart').getContext('2d');
+    var categoryDonutChart = new Chart(categoryCtx, {
+        type: 'doughnut',
+        data: {
+            labels: categories,
+            datasets: [{
+                label: 'Expenses by Category',
+                data: categoryAmounts,
+                backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#4bc0c0'],
+                hoverBackgroundColor: ['#ff3a4b', '#2a93d8', '#9b56e6', '#ff9c2b', '#3ab9b9']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Expenses by Date - Bar Chart
+    var dateLabels = ["11/21/2024","11/22/2024","11/23/2024","11/27/2024"];
+    var dateAmounts = [50.00,70.00,200.00,70.00];
+
+    var dateCtx = document.getElementById('expensesChart').getContext('2d');
+    var expensesChart = new Chart(dateCtx, {
+        type: 'bar',
+        data: {
+            labels: dateLabels,
+            datasets: [{
+                label: 'Total Expenses',
+                data: dateAmounts,
+                backgroundColor: 'rgba(54, 162, 235, 1)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return '$' + value.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Expenses by Payment Method - Pie Chart
+    var paymentMethods = ["Debit Card","Zelle","Cash"];
+    var paymentAmounts = [50.00,270.00,70.00];
+
+    var paymentCtx = document.getElementById('paymentMethodPieChart').getContext('2d');
+    var paymentMethodPieChart = new Chart(paymentCtx, {
+        type: 'pie',
+        data: {
+            labels: paymentMethods,
+            datasets: [{
+                label: 'Expenses by Payment Method',
+                data: paymentAmounts,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF9F40', '#9966FF'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    /* CSS to ensure canvas is small and responsive */
+    .chart-canvas {
+        max-width: 100%;
+        width: 100%; /* Ensure the canvas stretches within its container */
+        height: 300px !important; /* Adjust height to maintain aspect ratio */
+    }
+
+    /* Optional: Make charts more responsive with padding/margin adjustments */
+    .pt-4, .pb-3 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .container {
+        padding-top: 20px; /* Optional padding */
+    }
+
+    /* Optional: Resize the titles if necessary to make charts more balanced */
+    h1 {
+        font-size: 1.5rem; /* Adjust font size */
+    }
+</style>
+
+        </main>
+    </div>
+
+    <footer b-7m57npvwnm class="border-top footer text-muted">
+        <div b-7m57npvwnm class="container">
+            &copy; 2024 - ExpenseTracker - <a href="/Home/About">About</a>
+        </div>
+    </footer>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo"></script>
+    
+</body>
+</html>
